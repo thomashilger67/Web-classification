@@ -17,13 +17,13 @@ def get_html_text(url : str):
                     'Connection': 'keep-alive'}
     html_text = ''
     try:
-        response = requests.get(url, headers=REQUEST_HEADERS, timeout=3)
+        response = requests.get(url, headers=REQUEST_HEADERS, timeout=1)
         if response.status_code == 200: 
             soup = BeautifulSoup(response.text, 'html.parser')
             html_text = (soup.get_text()).replace("\n", " ")
             print(url)        #to extract html code from page
     except Exception as e:
-        print(e)
+        print(f"{url} : Error")
     
     return html_text
 
