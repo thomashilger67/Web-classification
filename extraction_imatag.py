@@ -16,7 +16,7 @@ with open('data/imatag.csv','w') as csv_file:
         # i += 1
         # number_of_lines = i
         # print(number_of_lines) # 758486
-        for i in range(758486):
+        for i in range(758486):# hardcode : rajouter un enumerate
             json_line_str = fin.readline()
             json_line_dict = json.loads(json_line_str)
             json_line_id = list(json_line_dict.keys())[0]
