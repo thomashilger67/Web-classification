@@ -11,13 +11,15 @@ list_url = list(df['url'])
 
 
 def add_tokens(url):
-    result = all(url)
-    if len(result) == 0:
-        result = []
-    return result
+    result_tokens, metades = all(url)
+    if len(result_tokens) == 0:
+        result_tokens = []
+    if len(metades) == 0:
+        metades = []
+    return result_tokens, metades
 
 final_token = []
-
+final_meta = []
 with concurrent.futures.ThreadPoolExecutor(32) as executor:
     futures = []
     for url in list_url:
@@ -29,12 +31,17 @@ with concurrent.futures.ThreadPoolExecutor(32) as executor:
 
 for future in futures:
     try:
-        final_token.append(future.result())
+        tok, des = future.result()
+        final_token.append(tok)
+        final_meta.append(des)
     except Exception as e:
         print(e)
 
 # sample['tokens'] = final_token
 # sample = sample[sample['tokens'].map(lambda d: len(d)) > 0]
 df['tokens'] = final_token
+df['metadescription'] = final_meta
 df = df[df['tokens'].map(lambda d: len(d)) > 0]
-df.to_csv("/home/ensai/imatag/website_categorization_custom/categorization/Datasets/Feature_dataset_2023-02-01_clean_full.csv")
+df = df[df['metadescription'].map(lambda d: len(d)) > 0]
+df = df[df['metadescription'].map(lambda d: d[0]) != '']
+df.to_csv("/home/ensai/imatag/website_categorization_custom/categorization/Datasets/Feature_dataset_2023-02-08_clean_full_meta.csv")
