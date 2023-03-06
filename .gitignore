@@ -9,7 +9,13 @@ __pycache__/
 
 # C extensions
 *.so
-
+#files 
+glove.6B.50.txt
+glove.6B.100.txt
+glove.6B.200.txt
+glove.6B.300.txt
+glove.6B.zip 
+dmoz.csv
 # Distribution / packaging
 .Python
 build/
