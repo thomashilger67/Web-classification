@@ -12,7 +12,7 @@ wnl = WordNetLemmatizer()
 
 def scrape_url(url, words_frequency):
     try:
-        res = requests.get(url, headers=config.REQUEST_HEADERS, timeout=15)
+        res = requests.get(url, headers=config.REQUEST_HEADERS, timeout=5)
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, "html.parser")
             [tag.decompose() for tag in soup("script")]
@@ -70,7 +70,7 @@ def scrape(props):
     url = props[1]
     print(i, url)
     try:
-        return requests.get(url, headers=config.REQUEST_HEADERS, timeout=15)
+        return requests.get(url, headers=config.REQUEST_HEADERS, timeout=5)
     except:
         return ''
 
