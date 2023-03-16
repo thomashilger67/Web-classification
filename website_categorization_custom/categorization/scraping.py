@@ -32,7 +32,7 @@ def transform_text(html_text : str):
     stop_words = set(stopwords.words('english'))
     cleaned_text = re.sub('[^a-zA-Z]+', ' ', str(html_text)).strip()
     tokens = word_tokenize(cleaned_text)
-    tokens_lemmatize = [w for w in tokens if not w.lower() in stop_words]
+    tokens_lemmatize = [w.lower() for w in tokens if not w.lower() in stop_words]
     return tokens_lemmatize
 
 def all(url : str):
