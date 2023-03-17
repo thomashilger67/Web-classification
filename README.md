@@ -1,15 +1,24 @@
-# imatag
-Github repository for the end-of-the-year project with IMATAG at ENSAI
+# Website classification
 
+Github repository for the end-of-the-year project with IMATAG at ENSAI. The goal of this project is to add information to Imatag's data. Our main focus was to classif all the website in the dataset.
 
-# TODO
+### How to use
 
-## Créer une mesure des modèles de classification
+You can try to categorize a website using the following command :
 
+```cmd
+python3 main.py --website_url <<insert_an_url_here>>
+```
 
+This command will return the predicted category for the website.
 
-## Construire un algo de catégorisation des sites web :
+Here are some examples (with a naive bayesian model) :
 
-Etape 1 : On calcule les n (1000) tokens les plus fréquents sur l'ensemble des sites. On retire les stopwords de cette liste.
-
-Etape 2 : On construit la matrice de ces 1000 mots sur les différents sites et on entraine le modèle
+```cmd
+> python3 main.py --website_url https://www.bbc.com/news
+> Society
+> python3 main.py --website_url https://www.leparisien.fr/
+> Recreation
+> python3 main.py --website_url https://www.apple.com/fr/
+> Computers
+```
