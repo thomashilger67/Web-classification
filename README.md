@@ -10,7 +10,7 @@ You can try to categorize a website using the following command :
 python3 main.py --website_url <<insert_an_url_here>>
 ```
 
-This command will return the predicted category for the website.
+This command will return the predicted category for the website. You can also select the model you want to use using the `--model` parameter (not working yet).
 
 Here are some examples (with a naive bayesian model) :
 
