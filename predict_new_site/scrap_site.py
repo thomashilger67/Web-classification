@@ -25,4 +25,5 @@ def scrap_data_from_website(url : str):
     cleaned_text = re.sub('[^a-zA-Z]+', ' ', str(html_text)).strip()
     tokens = word_tokenize(cleaned_text)
     tokens_lemmatize = [w.lower() for w in tokens if not w.lower() in stop_words]
-    return tokens_lemmatize
+    desc = " ".join(tokens_lemmatize)
+    return desc
