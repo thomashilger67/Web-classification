@@ -4,6 +4,7 @@ import click
 from scrap_site import scrap_data_from_website
 from predict_bayesian import predict_bayesian
 from predict_nn import predict_nn
+from predict_bert import predict_bert
 import pandas as pd
 
 
@@ -18,6 +19,8 @@ def predict_category(website_url,predict_proba, model):
         result = predict_bayesian(df_data_website, predict_proba)
     elif model == 2:
         result = predict_nn(df_data_website, predict_proba)
+    elif model == 3:
+        result = predict_bert(desc, predict_proba)
     print(result)
 
 if __name__ == "__main__":
